@@ -1,9 +1,10 @@
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
-  background: gray;
+  background: lightgray;
 }
 
 .search {
@@ -36,5 +37,52 @@ body {
 }
 
 .search input:focus {
-  color #802;
+  color: #802;
+}
+.box{
+  background-color: aliceblue;
+  width: 70%;
+  margin: 30px;
+  padding: 20px 100px 100px 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+table{
+  border-collapse: collapse;
+    letter-spacing: 1px;
+    font-size: .8rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+table td{
+  text-align: center;
+  padding: 20px;
+}
+th{
+  padding: 10px;
+}
+th[scope="row"] {
+    background-color: #d7d9f2;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+.chat_icon_div{
+  background-color: aliceblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px 10px 10px 0px;
+  border-style: solid;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.chat_icon_div:hover{
+  cursor: pointer;
+}
+
+.chat_icon{
+  height: 100%;
+  width: 100%;
+  padding: 8px;
 }

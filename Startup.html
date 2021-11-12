@@ -3,49 +3,8 @@
 <head>
 <meta charset="utf-8"/>  
 <title>React Startup Code</title>
-<style>
-  * {
-  box-sizing: border-box;
-}
+<link rel="stylesheet" href="weatherApp.css">
 
-body {
-  background: gray;
-}
-
-.search {
-  background: white;
-  position: relative;
-  width: 300px;
-  font-family:Verdana;
-  border-radius:16px;  
-}
-
-.search input {
-  width: 100%;
-  padding: 20px 60px 20px 20px;
-  display: block;
-  font-size: 16px;  
-  border-radius:16px;
-}
-
-.search button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 20px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 4px 8px;
-  z-index: 2;
-}
-
-.search input:focus {
-  color #802;
-}
-
-</style>
 </head>
 <body>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -59,17 +18,89 @@ body {
   </div>
 </form>
 
-<div id="content">
-
-</div>
+<div id="content"></div>
 
 <script type="text/babel">
-
 // React since react V4 does not read query parameters so we read query parameter directly
 const urlParams = new URLSearchParams(window.location.search);
 const ort = urlParams.get('ort');
 
 if(ort!=null) alert(ort);
+
+function Weather_container(props){
+  return (
+    <div className="box">
+      <h1>{props.city_name}</h1>
+      <p>{props.city_info}</p>
+    </div>
+  );
+}
+
+function Weather_table(props){
+  return(
+        <tr>
+          <td>{props.climatcode}</td>
+          <td>{props.temp}</td>
+          <td>{props.rain}</td>
+          <td>{props.wind}</td>
+          <td>{props.sun}</td>
+          <td>{props.reability}</td>
+        </tr>
+    );
+}
+
+function Chat(props){
+  return(
+    <div className="chat_icon_div">
+      <img src="chat_icon.png" className="chat_icon"/>
+    </div>
+    );
+}
+
+const data = [
+  { climatcode: '1', temp: '15', rain: '4,2 mm', wind: '1 m/s', sun: '07:30', reability: 'sure'},
+  { climatcode: '2', temp: '13', rain: '7,4 mm', wind: '5 m/s', sun: '07:32', reability: 'unsure'},
+  { climatcode: '3', temp: '10', rain: '3,0 mm', wind: '2 m/s', sun: '07:35', reability: 'unsure'},
+  { climatcode: '3', temp: '10', rain: '3,0 mm', wind: '2 m/s', sun: '07:35', reability: 'unsure'}
+];
+
+function App(){
+  return(
+    <div>
+      <Weather_container city_name="Jönköping" city_info="TEMPLETEINFO"/>
+      <table className="box">
+        <thead>
+          <tr>
+            <th scope="row"></th>
+            <th scope="row">Temperature max/min</th>
+            <th scope="row">Rain</th>
+            <th scope="row">Wind</th>
+            <th scope="row">Sun times up/down</th>
+            <th scope="row">Reability</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(info =>
+            <Weather_table
+            climatcode={info.climatcode} 
+              temp={info.temp} 
+              rain={info.rain} 
+              wind={info.wind} 
+              sun={info.sun} 
+              reability={info.reability}
+              />
+          )}
+        </tbody>
+      </table>
+      <Chat/>
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('content')
+);
 
 </script>
 </body>
