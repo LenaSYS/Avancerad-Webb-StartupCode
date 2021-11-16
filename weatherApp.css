@@ -47,6 +47,16 @@ body {
   padding: 20px 20px 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+.climatecode_icon{
+  border: 2px solid black;
+  height: 20px;
+  border-radius:20px;
+  position: absolute;
+  left: 160px;
+  top: 35px;
+  width: 20px;
+}
+
 table{
   border-collapse: collapse;
     letter-spacing: 1px;

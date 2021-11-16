@@ -36,11 +36,20 @@ function Weather_container(props){
       <p>{props.province}</p>
       <p>{props.county}</p>
       <p>{props.municipality}</p>
-      <p>{props.climatecode}</p>
       <p>{props.climate}</p>
       <p>{props.charter}</p>
       <p>{props.postalcode}</p>
       <p>{props.areacode}</p>
+    </div>
+  );
+}
+
+function Climatecode(props){
+  return(
+    <div className="box">
+      <p>Climate Code: {props.code} - </p>
+      <span className="climatecode_icon" style={{backgroundColor:props.color}}></span>
+      <p>{props.name}</p>
     </div>
   );
 }
@@ -79,6 +88,10 @@ const data = [
   { name:'', fromtime: '3', totime: '10', periodno: '3,0 mm', periodname: '2 m/s', auxdata: '07:35', comment_id:"123", user_id:"0101", date:"01-21-2012"}
 ];
 
+const climate =[
+  { code:'AF', name: 'Hot semi-arid (steppe) climate Arid Steppe Hot', color: '#FF6E6E'}
+]
+
 const data_comment = [
   { user: "2", id:"1111", location:"Grums", replyto:"", author:"1", content:"Här uppe i norr är det så kallt denna veckan så att snuset fryser i fickan och värmlänningarna klagar på odören från bruket. Veklingar.", posted:"2021-11-01 09:30" },
   { user: "1",id:"1111", location:"Grums", replyto:"", author:"2", content:"aknade upp av stanken från pappersbruket som vinden tryckte framför sig längs älven.", posted:"2021-11-01 09:30" },
@@ -107,9 +120,15 @@ class App extends React.Component{
     <div>
       <Weather_container 
         name="jönköping" 
-        about="Jönköping is a city in southern Sweden with 93,797 inhabitants (2015). Jönköping is situated at the southern end of Sweden's second largest lake, Vättern, in the province of Småland.The city is the seat of Jönköping Municipality, which has a population of 141 081 and is Småland's most populous municipality.Jönköping is also the seat of Jönköping County which has a population of 363 599. Jönköping is the seat of a district court and a court of appeal as well as the Swedish National Courts Administration. It is the seat of the Swedish Board of Agriculture."
-
-      />  
+        about="Jönköping is a city in southern"
+      />
+      {climate.map(climate =>
+        <Climatecode
+          code={climate.code}
+          name={climate.name} 
+          color={climate.color} 
+        />    
+      )}  
       <table className="box">
         <thead>
           <tr>
@@ -134,7 +153,6 @@ class App extends React.Component{
           )}
         </tbody>
       </table>
-      <div>{this.state.count}</div>
       <div className="chat_icon_div" onClick={this.handleClick}>
         <img src="chat_icon.png" className="chat_icon"/>
         <div className="chat_box" style={{display:this.state.display}}>
