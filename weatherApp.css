@@ -7,11 +7,11 @@ body {
   background: lightgray;
 }
 
+
 .search {
   background: white;
   position: relative;
   width: 300px;
-  font-family:Verdana;
   border-radius:16px;  
 }
 
@@ -41,9 +41,10 @@ body {
 }
 .box{
   background-color: aliceblue;
-  width: 70%;
-  margin: 30px;
-  padding: 20px 100px 100px 20px;
+  position: relative;
+  width: 60%;
+  margin: 30px 0 30px 30px;
+  padding: 20px 20px 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 table{
@@ -71,13 +72,13 @@ tr:nth-child(even) {
   height: 50px;
   border-radius: 10px 10px 10px 0px;
   border-style: solid;
-  margin: 10px;
+  margin: 20px;
   position: absolute;
   top: 0;
   right: 0;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-.chat_icon_div:hover{
+.chat_icon:hover{
   cursor: pointer;
 }
 
@@ -85,4 +86,43 @@ tr:nth-child(even) {
   height: 100%;
   width: 100%;
   padding: 8px;
+}
+.chat_box{
+  padding: 8px;
+  position: absolute;
+  right: 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: aliceblue;
+  overflow:auto;
+  height: 680px;
+  width: 500px;
+  display: none;
+  border: aliceblue solid 10px;
+}
+.chat_comment{
+  width: 100%;
+  margin: 20px 0 20px 0;
+  height: auto;
+  padding: 10px;
+  background-color: #eee;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  position: relative;
+}
+.like_btn_border{
+  height: 40px;
+  width: 70px;
+  margin: 0;
+}
+.like_btn{
+  height: 30px;
+  width: 30px;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+}
+.like_btn_icon{
+  height: 100%;
+  width: 100%;
+  top: 10px;
 }
