@@ -3,49 +3,8 @@
 <head>
 <meta charset="utf-8"/>  
 <title>React Startup Code</title>
-<style>
-  * {
-  box-sizing: border-box;
-}
+<link rel="stylesheet" href="weatherApp.css">
 
-body {
-  background: gray;
-}
-
-.search {
-  background: white;
-  position: relative;
-  width: 300px;
-  font-family:Verdana;
-  border-radius:16px;  
-}
-
-.search input {
-  width: 100%;
-  padding: 20px 60px 20px 20px;
-  display: block;
-  font-size: 16px;  
-  border-radius:16px;
-}
-
-.search button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 20px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 4px 8px;
-  z-index: 2;
-}
-
-.search input:focus {
-  color #802;
-}
-
-</style>
 </head>
 <body>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -59,17 +18,167 @@ body {
   </div>
 </form>
 
-<div id="content">
-
-</div>
-
+<div id="content"></div>
 <script type="text/babel">
-
 // React since react V4 does not read query parameters so we read query parameter directly
 const urlParams = new URLSearchParams(window.location.search);
 const ort = urlParams.get('ort');
-
 if(ort!=null) alert(ort);
+
+function Weather_container(props){
+  return (
+    <div className="box">
+      <h1>{props.name}</h1>
+      <p>{props.type}</p>
+      <p>{props.country}</p>
+      <p>{props.geolocation}</p>
+      <p>{props.about}</p>
+      <p>{props.province}</p>
+      <p>{props.county}</p>
+      <p>{props.municipality}</p>
+      <p>{props.climate}</p>
+      <p>{props.charter}</p>
+      <p>{props.postalcode}</p>
+      <p>{props.areacode}</p>
+    </div>
+  );
+}
+
+function Climatecode(props){
+  return(
+    <div className="box">
+      <p>Climate Code: {props.code} - </p>
+      <span className="climatecode_icon" style={{backgroundColor:props.color}}></span>
+      <p>{props.name}</p>
+    </div>
+  );
+}
+
+function Weather_table(props){
+  return(
+        <tr>
+          <td>{props.name}</td>
+          <td>{props.fromtime}</td>
+          <td>{props.totime}</td>
+          <td>{props.periodno}</td>
+          <td>{props.periodname}</td>
+          <td>{props.auxdata}</td>
+        </tr>
+    );
+}
+
+function Chat_post(props){
+  return(
+    <div className="chat_comment">
+          <h2>{props.location}</h2>
+          <p style={{fontSize:"14px"}}>{props.content}</p>
+          <p>Author ID: {props.author}</p>
+          <div className="like_btn_border">
+            <div className="like_btn"><img src="like_btn.png" className="like_btn_icon"/>{props.user}</div>
+          </div>          
+          <div style={{opacity: "70%", bottom:"10px"}}>Posted: {props.posted}</div>
+        </div>
+    );
+}
+
+const data = [
+  { name:'jönköping', fromtime: '1', totime: '15', periodno: '4,2 mm', periodname: '1 m/s', auxdata: '07:30'},
+  { name:'', fromtime: '2', totime: '13', periodno: '7,4 mm', periodname: '5 m/s', auxdata: '07:32'},
+  { name:'', fromtime: '3', totime: '10', periodno: '3,0 mm', periodname: '2 m/s', auxdata: '07:35'},
+  { name:'', fromtime: '3', totime: '10', periodno: '3,0 mm', periodname: '2 m/s', auxdata: '07:35', comment_id:"123", user_id:"0101", date:"01-21-2012"}
+];
+
+const climate =[
+  { code:'AF', name: 'Hot semi-arid (steppe) climate Arid Steppe Hot', color: '#FF6E6E'}
+]
+
+const data_comment = [
+  { user: "2", id:"1111", location:"Grums", replyto:"", author:"1", content:"Här uppe i norr är det så kallt denna veckan så att snuset fryser i fickan och värmlänningarna klagar på odören från bruket. Veklingar.", posted:"2021-11-01 09:30" },
+  { user: "1",id:"1111", location:"Grums", replyto:"", author:"2", content:"aknade upp av stanken från pappersbruket som vinden tryckte framför sig längs älven.", posted:"2021-11-01 09:30" },
+  { user: "2",id:"1111", location:"Grums", replyto:"", author:"3", content:"aknade upp av stanken från pappersbruket som vinden tryckte framför sig längs älven.", posted:"2021-11-01 09:30" },
+  { user: "3",id:"1111", location:"Grums", replyto:"", author:"4", content:"aknade upp av stanken från pappersbruket som vinden tryckte framför sig längs älven.", posted:"2021-11-01 09:30" },
+  { user: "1",id:"1112", location:"Jönköping", replyto:"", author:"5", content:"vaknade upp som vinden tryckte framför sig längs älven.", posted:"2021-11-01 09:33" }
+];
+
+class App extends React.Component{
+  constructor (props){
+    super(props);
+    this.state ={
+      display : props.display
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(){
+    if(this.state.display == "block"){
+      this.setState({display:"none"});
+    }else{
+      this.setState({display:"block"});
+    }
+  }
+  render(){
+    return(
+    <div>
+      <Weather_container 
+        name="jönköping" 
+        about="Jönköping is a city in southern"
+      />
+      {climate.map(climate =>
+        <Climatecode
+          code={climate.code}
+          name={climate.name} 
+          color={climate.color} 
+        />    
+      )}  
+      <table className="box">
+        <thead>
+          <tr>
+            <th scope="row"></th>
+            <th scope="row">From</th>
+            <th scope="row">To</th>
+            <th scope="row">Periodno</th>
+            <th scope="row">During</th>
+            <th scope="row">auxdata</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(data =>
+            <Weather_table
+              name={data.name}
+              fromtime={data.fromtime} 
+              totime={data.totime} 
+              periodno={data.periodno} 
+              periodname={data.periodname} 
+              auxdata={data.auxdata} 
+            />
+          )}
+        </tbody>
+      </table>
+      <div className="chat_icon_div" onClick={this.handleClick}>
+        <img src="chat_icon.png" className="chat_icon"/>
+        <div className="chat_box" style={{display:this.state.display}}>
+        <h1>Chat</h1>
+          {data_comment.map(chat =>
+            <Chat_post
+              id={chat.id}
+              location={chat.location}
+              replyto={chat.replyto}
+              author={chat.author}
+              content={chat.content}
+              posted={chat.posted}
+              user={chat.user}
+            />  
+          )}
+        </div>
+      </div>
+    </div>
+  );
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('content')
+);
 
 </script>
 </body>

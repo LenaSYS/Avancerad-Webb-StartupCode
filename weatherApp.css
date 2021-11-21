@@ -1,16 +1,17 @@
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
-  background: gray;
+  background: lightgray;
 }
+
 
 .search {
   background: white;
   position: relative;
   width: 300px;
-  font-family:Verdana;
   border-radius:16px;  
 }
 
@@ -36,5 +37,102 @@ body {
 }
 
 .search input:focus {
-  color #802;
+  color: #802;
+}
+.box{
+  background-color: aliceblue;
+  position: relative;
+  width: 60%;
+  margin: 30px 0 30px 30px;
+  padding: 20px 20px 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.climatecode_icon{
+  border: 2px solid black;
+  height: 20px;
+  border-radius:20px;
+  position: absolute;
+  left: 160px;
+  top: 35px;
+  width: 20px;
+}
+
+table{
+  border-collapse: collapse;
+    letter-spacing: 1px;
+    font-size: .8rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+table td{
+  text-align: center;
+  padding: 20px;
+}
+th{
+  padding: 10px;
+}
+th[scope="row"] {
+    background-color: #d7d9f2;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+.chat_icon_div{
+  background-color: aliceblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px 10px 10px 0px;
+  border-style: solid;
+  margin: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.chat_icon:hover{
+  cursor: pointer;
+}
+
+.chat_icon{
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+}
+.chat_box{
+  padding: 8px;
+  position: absolute;
+  right: 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: aliceblue;
+  overflow:auto;
+  height: 680px;
+  width: 500px;
+  display: none;
+  border: aliceblue solid 10px;
+}
+.chat_comment{
+  width: 100%;
+  margin: 20px 0 20px 0;
+  height: auto;
+  padding: 10px;
+  background-color: #eee;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  position: relative;
+}
+.like_btn_border{
+  height: 40px;
+  width: 70px;
+  margin: 0;
+}
+.like_btn{
+  height: 30px;
+  width: 30px;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+}
+.like_btn_icon{
+  height: 100%;
+  width: 100%;
+  top: 10px;
 }
